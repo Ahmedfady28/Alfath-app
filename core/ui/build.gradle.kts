@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -28,7 +31,11 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "11"
+        tasks.withType<KotlinCompile>().configureEach {
+            compilerOptions {
+                jvmTarget.set(JvmTarget.JVM_11)
+            }
+        }
     }
 }
 
@@ -36,7 +43,14 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+    api(libs.androidx.material3)
+    api(libs.material.icons.extended)
+
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(platform(libs.koin.bom))
+    api(libs.koin.compose.viewmodel)
+    api(libs.koin.compose)
+    api(libs.koin.androidx.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
