@@ -19,6 +19,9 @@
             <option value="$PROJECT_DIR$/features/home/ui" />
             <option value="$PROJECT_DIR$/features/profile" />
             <option value="$PROJECT_DIR$/features/profile/ui" />
+            <option value="$PROJECT_DIR$/infrastructure" />
+            <option value="$PROJECT_DIR$/infrastructure/database" />
+            <option value="$PROJECT_DIR$/infrastructure/network" />
             <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/navigation/api" />
             <option value="$PROJECT_DIR$/navigation/impl" />
