@@ -15,5 +15,7 @@ kotlin {
         implementation(platform(libs.koin.bom))
         api(libs.koin.core)
         api(libs.coroutines.core)
+
+        testImplementation(libs.coroutines.test)
     }
 }

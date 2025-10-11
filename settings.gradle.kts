@@ -19,6 +19,8 @@ dependencyResolutionManagement {
     }
 }
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 rootProject.name = "Alfath"
 include(":app")
 include(":core:ui")

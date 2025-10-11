@@ -41,15 +41,21 @@ android {
 }
 
 dependencies {
+    // platforms
     implementation(platform(libs.androidx.compose.bom))
     implementation(platform(libs.koin.bom))
 
+    // libs
     implementation(libs.koin.compose.viewmodel.navigation)
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.material3)
+
+    // refs
+    implementation(projects.navigation.api)
+
     testImplementation(libs.junit)
+    testImplementation(libs.coroutines.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
