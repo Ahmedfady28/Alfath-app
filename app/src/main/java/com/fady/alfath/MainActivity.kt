@@ -19,6 +19,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AlfathTheme {
+                // get Navigation handler
+                // val navController = rememberNavController()
+                // add navHost
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",

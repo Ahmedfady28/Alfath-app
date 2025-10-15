@@ -1,4 +1,3 @@
-import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -50,12 +49,34 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.material3)
+    implementation(libs.navigation3.runtime)
+//    implementation(libs.android.junit5)
+
 
     // refs
     implementation(projects.navigation.api)
 
+
+    // tests
+//    testImplementation(libs.coroutines.test)
+//    testImplementation(libs.mockk)
+//    testImplementation(libs.turbine)
+//    testImplementation(libs.junit.jupiter)
+//    testImplementation(libs.kotest.assertion.core)
+    testImplementation(libs.bundles.test)
+
+    androidTestImplementation(libs.mockk.android)
+
+
+
     testImplementation(libs.junit)
-    testImplementation(libs.coroutines.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
+    testImplementation(kotlin("test"))
+
+
 }

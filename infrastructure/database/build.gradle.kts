@@ -46,6 +46,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.bundles.room)
+    ksp(libs.room.compiler)
 
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.core)
@@ -54,6 +55,7 @@ dependencies {
 
     testImplementation(libs.junit)
     testImplementation(libs.coroutines.test)
+    testImplementation(libs.room.testing)
     androidTestImplementation(libs.room.testing)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
