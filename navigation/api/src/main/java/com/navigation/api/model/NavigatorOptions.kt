@@ -1,7 +1,5 @@
 package com.navigation.api.model
 
-import com.navigation.api.NavigationAction
-
 /**
  * Represents the configuration options for a navigation action.
  *

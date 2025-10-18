@@ -10,8 +10,8 @@ import com.navigation.impl.fake.FakeNavigationActionMapper
 import com.navigation.impl.model.TestAction
 import com.navigation.impl.model.TestDestination
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 import kotlin.test.assertFailsWith
 import kotlin.test.assertIs
 
@@ -21,7 +21,7 @@ class NavigationCommandPublisherTest {
 
     @Test
     fun `WHEN NavigateTo is handled THEN emits NavigationEvent NavigateTo`() = runTest {
-        val command = NavigationCommand.NavigateTo(TestAction.TestAction1, null)
+        val command = NavigationCommand.NavigateTo(TestAction.TestAction1)
 
         // Act + Assert
         publisher.events.test {

@@ -5,6 +5,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -38,6 +40,9 @@ android {
             }
         }
     }
+    buildFeatures {
+        compose = true
+    }
 }
 
 dependencies {
@@ -55,7 +60,7 @@ dependencies {
     
     //refs
     implementation(projects.core.ui)
-    implementation(projects.navigation.api)
+//    implementation(projects.navigation.api)
 
     //test
     testImplementation(libs.junit)

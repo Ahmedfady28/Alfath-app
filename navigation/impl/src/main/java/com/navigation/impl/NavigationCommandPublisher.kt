@@ -13,7 +13,7 @@ import kotlin.reflect.KClass
 
 
 internal class NavigationCommandPublisher(
-    mappers: Set<NavigationActionMapper<NavigationAction<*>>>,
+    mappers: Set<NavigationActionMapper<NavigationAction<*>>> = setOf(),
 ) : NavigationHandler {
 
     private val _events: Channel<NavigationEvent> = Channel(capacity = Channel.BUFFERED)

@@ -7,12 +7,14 @@ import com.navigation.api.model.NavigationCommand
 import com.navigation.api.model.NavigatorOptions
 import com.navigation.impl.contract.NavigationHandler
 
-internal class DefaultNavigator<in A : NavigationAction<*>>(
+internal class DefaultNavigator(
     private val handler: NavigationHandler,
-) : Navigator<A> {
+) : Navigator< NavigationAction<*>> {
 
-    override suspend fun navigateTo(to: A, builder: (NavigatorOptions.() -> Unit)?) =
-        handler.handle(NavigationCommand.NavigateTo(to, builder))
+    override suspend fun navigateTo(
+        to: NavigationAction<*>,
+        builder: (NavigatorOptions.() -> Unit)?,
+    ) = handler.handle(NavigationCommand.NavigateTo(to, builder))
 
 
     override suspend fun navigateTo(

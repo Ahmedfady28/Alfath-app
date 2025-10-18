@@ -11,7 +11,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+//import com.fady.alfath.navigation.AlfathNavHost
 import com.fady.alfath.ui.theme.AlfathTheme
+import com.navigation.impl.compose.AppRoot
+
+//import com.home.ui.navigation.HomeRoute
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,12 +23,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AlfathTheme {
-                // get Navigation handler
-                // val navController = rememberNavController()
-                // add navHost
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    AppRoot(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }

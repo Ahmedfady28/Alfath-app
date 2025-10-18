@@ -4,6 +4,12 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.android.junit5)
+    alias(libs.plugins.kotlin.serialization)
+}
+
+junitPlatform {
+    configurationParameter("junit.jupiter.testinstance.lifecycle.default", "per_class")
 }
 
 android {
@@ -49,13 +55,21 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.material3)
-    implementation(libs.navigation3.runtime)
+    implementation(libs.androidx.compose.ui)
+    //    navigation 3
+//    implementation(libs.navigation3.runtime)
+//    implementation(libs.navigation3.ui)
+//    implementation(libs.navigation3.lifecycle.viewmodel)
+//    implementation(libs.navigation3.material3.adaptive)
+
+    implementation(libs.androidx.navigation.compose)
 //    implementation(libs.android.junit5)
 
 
     // refs
     implementation(projects.navigation.api)
-
+    implementation(projects.features.home.ui)
+    implementation(projects.features.profile.ui)
 
     // tests
 //    testImplementation(libs.coroutines.test)
@@ -69,14 +83,24 @@ dependencies {
 
 
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
+//    testImplementation(libs.junit)
+//    androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.kotlinx.serialization.json)
+//    implementation(libs.kotlinx.serialization.core)
+//    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+//    testImplementation(kotlin("test"))
+
     androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-    debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+
+//    JUNIT 5
+    testImplementation(libs.junit5.jupiter.api)
+    testImplementation(libs.junit5.jupiter.params)
+    testRuntimeOnly(libs.junit5.jupiter.engine)
+    androidTestImplementation(libs.androidx.compose.ui.test.android)
+
+    androidTestImplementation(libs.junit5.jupiter.api)
     testImplementation(kotlin("test"))
-
-
 }

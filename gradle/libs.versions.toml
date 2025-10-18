@@ -13,16 +13,18 @@ appcompat = "1.7.1"
 jetbrainsKotlinJvm = "2.2.20"
 koin = "4.1.1"
 kotlinx-coroutines = "1.10.2"
+navigationCompose = "2.9.5"
 roomRuntime = "2.8.2"
 ksp = "2.2.20-2.0.4"
-nav3Core = "1.0.0-alpha11"
-lifecycleViewmodelNav3 = "2.10.0-alpha05"
+#nav3Core = "1.0.0-alpha11"
+#lifecycleViewmodelNav3 = "2.10.0-alpha05"
 kotlinxSerializationCore = "1.9.0"
-material3AdaptiveNav3 = "1.3.0-alpha01"
+#material3AdaptiveNav3 = "1.3.0-alpha01"
 kotlinxCollectionsImmutable = "0.4.0"
 
 junitJupiter = "6.0.0"
 turbine = "1.2.1"
+uiTestAndroid = "<version>"
 uiTestJunit4Android = "1.9.3"
 screenshot = "0.01-alpha07"
 androidJunit5 = "1.14.0.0"
@@ -33,8 +35,8 @@ mockk-android = "1.14.6"
 
 
 [libraries]
+androidx-compose-ui-test-android = { group = "androidx.compose.ui", name= "ui-test-android" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
@@ -74,14 +76,15 @@ room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRunti
 #room-paging = { module = "androidx.room:room-paging", version.ref = "roomRuntime" }
 
 # navigation
-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "nav3Core" }
-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "nav3Core" }
-navigation3-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "lifecycleViewmodelNav3" }
-navigation3-material3-adaptive = { group = "androidx.compose.material3.adaptive", name = "adaptive-navigation3", version.ref = "material3AdaptiveNav3" }
+#navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "nav3Core" }
+#navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "nav3Core" }
+#navigation3-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "lifecycleViewmodelNav3" }
+#navigation3-material3-adaptive = { group = "androidx.compose.material3.adaptive", name = "adaptive-navigation3", version.ref = "material3AdaptiveNav3" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 
 # serailization
 kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinxSerializationCore" }
-
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationCore" }
 
 # adaptive
 androidx-material3-adaptive = { module = "androidx.compose.material3.adaptive:adaptive" } #, version.ref = "material3Adaptive"
@@ -95,18 +98,34 @@ kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collec
 
 
 # testing
-junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junitJupiter" }
 turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
 ui-test-junit4-android = { group = "androidx.compose.ui", name = "ui-test-junit4-android", version.ref = "uiTestJunit4Android" }
-android-junit5 = { module = "org.junit.jupiter:junit-jupiter-android", version.ref = "androidJunit5" }
 kotest-assertion-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotestAssertionCore" }
 kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotestRunnerJunit5" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk-android" }
+
+# junit 5
+#android-junit5 = { module = "org.junit.jupiter:junit-jupiter-android", version.ref = "androidJunit5" }
+junit5-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junitJupiter" }
+junit5-jupiter-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junitJupiter" }
+junit5-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junitJupiter" }
+junit5-jupiter-params = { group = "org.junit.jupiter", name = "junit-jupiter-params", version.ref = "junitJupiter" }
+android-junit5-core = { module = "de.mannodermaus.junit5:android-test-core", version.ref = "androidJunit5" }
+android-junit5-runner = { module = "de.mannodermaus.junit5:android-test-runner", version.ref = "androidJunit5" }
+
+# if I has Junit 4-based test
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+junit-vintage-engine = { group = "org.junit.vintage", name = "junit.vintage-engine", version.ref = "junitJupiter" }
+
+# compose test
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+
+
+
+# 3rd party libs test
 room-testing = { module = "androidx.room:room-testing", version.ref = "roomRuntime" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
-
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -116,8 +135,8 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-sreenShot = { id = "com.android.compose.screenshot", version.ref = "screenshot" }
-android-junit = { id = "de.mannodermaus.android-junit5", version.ref = "androidJunit5" }
+screenShot = { id = "com.android.compose.screenshot", version.ref = "screenshot" }
+android-junit5 = { id = "de.mannodermaus.android-junit5", version.ref = "androidJunit5" }
 
 [bundles]
 room = [

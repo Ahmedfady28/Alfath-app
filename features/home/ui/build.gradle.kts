@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -58,7 +59,7 @@ dependencies {
 
     //refs
     implementation(projects.core.ui)
-    implementation(projects.navigation.api)
+
 
     //test
     testImplementation(libs.junit)

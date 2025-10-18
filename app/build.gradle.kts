@@ -67,20 +67,23 @@ dependencies {
     implementation(projects.infrastructure.network)
     implementation(projects.infrastructure.database)
 
-    implementation(projects.core.data)
-    implementation(projects.core.domain)
-    implementation(projects.core.ui)
+    implementation(libs.koin.android)
+    implementation(libs.koin.core)
+
+//    implementation(projects.core.data)
+//    implementation(projects.core.domain)
+//    implementation(projects.core.ui)
 
 
-    implementation(projects.features.home.ui)
+//    implementation(projects.features.home.ui)
+//
+//    implementation(projects.features.profile.ui)
 
-    implementation(projects.features.profile.ui)
-
-
-//    navigation 3
-    implementation(libs.navigation3.ui)
-    implementation(libs.navigation3.lifecycle.viewmodel)
-    implementation(libs.navigation3.material3.adaptive)
+//
+////    navigation 3
+//    implementation(libs.navigation3.ui)
+//    implementation(libs.navigation3.lifecycle.viewmodel)
+//    implementation(libs.navigation3.material3.adaptive)
 
 
     testImplementation(libs.junit)

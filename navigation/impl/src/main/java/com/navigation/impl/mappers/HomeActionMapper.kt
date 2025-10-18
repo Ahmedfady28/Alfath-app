@@ -1,14 +1,14 @@
-package com.fady.alfath.navigation.mappers
+package com.navigation.impl.mappers
 
 import com.home.ui.navigation.HomeNavigationAction
 import com.home.ui.navigation.HomeRoute
 import com.navigation.api.Destination
 import com.navigation.api.NavigationAction
 import com.navigation.impl.contract.NavigationActionMapper
-import com.profile.ui.ProfileRoute
+import com.profile.ui.navigation.ProfileRoute
 import kotlin.reflect.KClass
 
-object HomeActionMapper : NavigationActionMapper<HomeNavigationAction> {
+internal object HomeActionMapper : NavigationActionMapper<HomeNavigationAction> {
     override val actionType: KClass<out NavigationAction<HomeRoute>>
         get() = HomeNavigationAction::class
 
