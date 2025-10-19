@@ -1,5 +1,7 @@
 package com.profile.ui.layout
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,10 +31,18 @@ private fun ProfileScreen(
     if (state.isLoading)
         CircularProgressIndicator()
     else
-        Text(
-            text = "Profile Screen",
-            modifier = modifier
-        )
+        Column(modifier = modifier) {
+            Text(
+                text = "Profile Screen",
+                modifier = modifier
+            )
+
+            Button(onClick = {
+                onEvent(ProfileUiEvent.GoBack)
+            }) {
+                Text(text = "GoBack")
+            }
+        }
 
 
 }

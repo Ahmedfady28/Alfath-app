@@ -44,6 +44,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.bundles.adaptiveUi)
+    api(libs.androidx.material3.adaptive)
     api(libs.androidx.material3)
     api(libs.material.icons.extended)
     api(libs.kotlinx.collections.immutable)

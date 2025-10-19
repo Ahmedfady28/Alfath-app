@@ -1,25 +1,25 @@
+import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
 }
 
 android {
-    namespace = "com.fady.alfath"
-    compileSdk = 36
+    namespace = "com.navigation.implementation"
+    compileSdk {
+        version = release(36)
+    }
 
     defaultConfig {
-        applicationId = "com.fady.alfath"
         minSdk = 24
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -48,45 +48,30 @@ android {
 }
 
 dependencies {
-    implementation(libs.coroutines.android)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.appcompat)
     implementation(platform(libs.androidx.compose.bom))
-    implementation(platform(libs.koin.bom))
+    implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.androidx.compose.material3)
+    implementation(libs.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
+
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.android)
+    implementation(libs.koin.core)
+    implementation(libs.koin.compose)
+
 
 
     implementation(projects.navigation.api)
-    implementation(projects.navigation.implementation)
+    implementation(projects.features.home.ui)
+    implementation(projects.features.profile.ui)
+
 
     implementation(libs.androidx.navigation.compose)
-
-
-    implementation(projects.infrastructure.network)
-    implementation(projects.infrastructure.database)
-
-    implementation(libs.koin.android)
-    implementation(libs.koin.core)
-
-//    implementation(projects.core.data)
-//    implementation(projects.core.domain)
-//    implementation(projects.core.ui)
-
-
-//    implementation(projects.features.home.ui)
-//
-//    implementation(projects.features.profile.ui)
-
-//
-////    navigation 3
-//    implementation(libs.navigation3.ui)
-//    implementation(libs.navigation3.lifecycle.viewmodel)
-//    implementation(libs.navigation3.material3.adaptive)
+    implementation(libs.androidx.compose.material3.adaptive.navigation.suite)
 
 
     testImplementation(libs.junit)

@@ -1,12 +1,19 @@
 package com.profile.ui.di
 
-import com.core.ui.ScreenFeatureUi
-import com.profile.ui.navigation.ProfileFeatureUi
+import com.navigation.api.NavigationAction
+import com.navigation.api.Navigator
 import com.profile.ui.viewmodel.ProfileViewModel
-import org.koin.core.module.dsl.viewModelOf
+import org.koin.core.module.dsl.viewModel
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val ProfileUiModule = module {
-    viewModelOf(::ProfileViewModel)
-    single<ScreenFeatureUi> { ProfileFeatureUi }
+    viewModel {
+        ProfileViewModel(
+            navigator = get<Navigator<NavigationAction<*>>>(),
+            mainDispatcher = get(named("MainDispatcher")),
+            ioDispatcher = get(named("IODispatcher")),
+            stateHandle = get()
+        )
+    }
 }
